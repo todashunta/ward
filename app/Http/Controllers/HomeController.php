@@ -34,6 +34,12 @@ class HomeController extends Controller
         $chapters = Chapter::where('word_book_id', $word_book_id)->get();
         return view('edit', compact('word_book_name', 'chapters', 'id'));
     }
+    public function cword($chapter_id)
+    {
+        $chapter = Chapter::where('id', $chapter_id)->first();
+        $word_book = WordBook::where('id', $chapter->word_book->id)->first();
+        return view('cword', compact('chapter', 'word_book' ));
+    }
 
     public function  update(Request $request)
     {
@@ -44,10 +50,4 @@ class HomeController extends Controller
         return redirect()->route('edit', ['word_book_id' => $request->word_book_id]);
     }
 
-    public function cword($chapter_id)
-    {
-        $chapter = Chapter::where('id', $chapter_id)->first();
-        $word_book = WordBook::where('id', $chapter->word_book->id)->first();
-        return view('cword', compact('chapter', 'word_book'));
-    }
 }
