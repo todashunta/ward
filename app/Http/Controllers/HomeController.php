@@ -1,0 +1,1 @@
+dog inhale share leisure arrow afraid industry tide sorry build faint step quarter awesome attitude spy skill frozen unique uphold hood sign worry crawl
