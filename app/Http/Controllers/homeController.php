@@ -48,4 +48,6 @@ class HomeController extends Controller
     {
         $word_book = WordBook::where('id', $word_book_id)->get();
         $chapter = WordBook::where('id', $chapter_id)->get();
-        return view('cword', compact('word_book', 'chap
+        return view('cword', compact('word_book', 'chapter'));
+    }
+}
