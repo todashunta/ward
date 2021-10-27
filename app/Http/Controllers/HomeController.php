@@ -17,14 +17,15 @@ class HomeController extends Controller
 
     public function create()
     {
-        $word_book = WordBook::get();
-        return view('create', compact('word_book'));
+        $word_books = WordBook::get();
+        return view('create', compact('word_books'));
     }
 
     public function create_word_book(Request $request)
     {
-        WordBook::create(['word_book_name' => $request->name]);
-        return  redirect()->route('create');
+        WordBook::create(['name' => $request->word_book_name]);
+        $word_books = WordBook::get();
+        return  redirect()->route('create', compact('word_books'));
     }
 
     public function edit($word_book_id)
