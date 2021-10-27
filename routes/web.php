@@ -11,7 +11,9 @@ Route::get('/', function () {
 Route::get('/index', [HomeController::class, 'index'])->name('index');
 
 Route::get('/create', [HomeController::class, 'create'])->name('create');
-Route::post('/create', [HomeController::class, 'store'])->name('store');
+Route::post('/create', [HomeController::class, 'create_word_book'])->name('create_word_book');
+// Route::post('/create', [HomeController::class, 'create_chapter'])->name('create_chapter');
+// Route::post('/create', [HomeController::class, 'create_word'])->name('create_word');
 
 Route::get('/edit/{word_book_id}', [HomeController::class, 'edit'])->name('edit');
 Route::post('/edit', [HomeController::class, 'update'])->name('update');

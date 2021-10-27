@@ -21,9 +21,9 @@ class HomeController extends Controller
         return view('create', compact('word_book'));
     }
 
-    public function store(Request $request)
+    public function create_word_book(Request $request)
     {
-        WordBook::create(['name' => $request->name]);
+        WordBook::create(['word_book_name' => $request->name]);
         return  redirect()->route('create');
     }
 
