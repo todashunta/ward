@@ -51,6 +51,7 @@ class HomeController extends Controller
         $word_book = WordBook::where('id', $chapter->word_book->id)->first();
         return view('cword', compact('word_book', 'chapter'));
     }
+
     public function postword()
     {
         return redirect()->route('cword');

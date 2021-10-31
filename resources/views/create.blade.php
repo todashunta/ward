@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>create</title>
-</head>
+@section('css', "{{ asset('css/app.css') }}")
+@section('title', 'create')
+
+@extends('header')
+@section('content')
 <body>
     <form action="{{ route('create_post')}}" method="POST">
         @csrf
@@ -38,3 +35,4 @@
     </form>
     </body>
 </html>
+@endsection
