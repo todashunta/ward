@@ -3,6 +3,7 @@
 
 @extends('header')
 @section('content')
+App\Models\Chapter;
 <body>
     <form action="{{ route('create_post')}}" method="POST">
         @csrf
@@ -13,7 +14,6 @@
             <input type="text" name="word_book_name">
             <button type="submit">作成</button>
         </div>
-
         <div>
             <h2>単語帳チャプター作成</h2>
                 @csrf
@@ -22,7 +22,6 @@
                     <option value="{{ $book->id }}">{{ $book->name }}</option>
                     @endforeach
                 </select>
-                <input type="text" name="chapter_name">
                 <button type="submit">作成</button>
         </div>
 
@@ -33,6 +32,7 @@
                 <button type="submit">作成</button>
         </div>
     </form>
+    <script src="js/create.js"></script>
     </body>
 </html>
 @endsection
