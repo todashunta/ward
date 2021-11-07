@@ -15,6 +15,5 @@
             @endforeach
         @endforeach
     </table>
-</body>
-</html>
 @endsection
+@extends('footer')

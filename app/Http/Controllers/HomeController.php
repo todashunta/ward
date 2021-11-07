@@ -14,6 +14,7 @@ class HomeController extends Controller
         $word_books = WordBook::get();
         return view('index', compact('word_books'));
     }
+    
 
     public function create()
     {
