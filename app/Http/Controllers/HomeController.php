@@ -14,7 +14,7 @@ class HomeController extends Controller
         $word_books = WordBook::get();
         return view('index', compact('word_books'));
     }
-    
+
 
     public function create()
     {
@@ -24,7 +24,16 @@ class HomeController extends Controller
 
     public function create_word_book(Request $request)
     {
-        WordBook::create(['name' => $request->word_book_name]);
+        if (!empty($request->word_book_name)) {
+            WordBook::create(['name' => $request->word_book_name]);
+        }
+        if (!empty($request->chapter_name)) {
+            WordBook::where('id', $request->word_book_id)->first();
+            $chapter = new Chapter;
+            $chapter->name = $request->chapter_name;
+            $chapter->word_book_id = $request->word_book_id;
+            $chapter->save();
+        }
         $word_books = WordBook::get();
         return  redirect()->route('create', compact('word_books'));
     }

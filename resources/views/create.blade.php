@@ -16,19 +16,21 @@
         <div id="create-chapter">
             <h2>単語帳チャプター作成</h2>
                 @csrf
-                <select v-model="wordBook">
+                <select v-model="wordBook" name="word_book_id">
                     @foreach ($word_books as $book)
                     <option value="{{ $book->id }}">{{ $book->name }}</option>
                     @endforeach
-                    <div>
-                        <p>現在のチャプター</p>
-                        <select>
-                            <template v-for='chapter of chapters'>
-                                <option value="@{{ chapter.id }}">@{{ chapter.name }}</option>
-                            </template>
-                        </select>
-                    </div>
                 </select>
+                <div>
+                    <p>現在のチャプター</p>
+                    <div v-if="exist">
+                        <p v-for='chapter of chapters' value="@{{ chapter.id }}">@{{ chapter.name }}</p>
+                    </div>
+                    <div v-else>
+                        <p>見つかりません</p>
+                    </div>
+                </div>
+                <input type="text" name="chapter_name">
                 <button type="submit">作成</button>
         </div>
         

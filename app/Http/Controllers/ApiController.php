@@ -20,8 +20,8 @@ class ApiController extends Controller
         $word_book = WordBook::where('id', $word_book_id)->first();
         if (empty($word_book)) {
             $data = [
-                'word_book' => 'not exist',
-                'chapters' => 'not exist'
+                'word_book' => false,
+                'chapters' => [false]
             ];
             return response()->json($data);
         }
