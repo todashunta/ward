@@ -1,19 +1,15 @@
-@section('css', "{{ asset('css/app.css') }}")
+{{-- @section('css', "css/app.css") --}}
 @section('title', 'index')
+@section('script', "js/index.js")
 
-@extends('header')
+@extends('layouts.header')
 @section('content')
-<body>
-    <a href="/create">単語帳作成</a>
-    <table>
+<div id="app">
+    <select v-model="selectBookId">
         @foreach ($word_books as $book)
-            @foreach ($book->chapter as $chapter)
-                <tr>
-                    <td><a href="/edit/{{ $book->id }}">{{ $book->name }}</a></td>
-                    <td>{{ $chapter->name }}</td>
-                </tr>
-            @endforeach
+        <option value="{{ $book->id }}">{{ $book->name }}</option>
         @endforeach
-    </table>
+    </select>
+</div>
+
 @endsection
-@extends('footer')
