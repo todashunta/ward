@@ -1,9 +1,9 @@
-@section('css', "{{ asset('css/app.css') }}")
+@extends('layouts.header')
 @section('title', 'create')
 
-@extends('header')
+@section('script', "js/create.js")
+
 @section('content')
-<body>
     <form action="{{ route('create_post')}}" method="POST">
         @csrf
     <h1>作成ページ</h1>
@@ -67,9 +67,4 @@
             </div>
     </div>
     </form>
-
-    <example-component></example-component>
-    <script src="js/create.js"></script>
 @endsection
-@section('script', 'js/create.js')
-@extends('footer')

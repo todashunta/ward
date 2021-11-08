@@ -2,16 +2,16 @@ const app = Vue.createApp({
     data(){
         return {
             selectBookId: '0',
-            chapters = [],
+            chapters: [],
         }
     },
-    created(){
-        getApi('https://localhost/book/' + selectBookId).then(data => {
-            console.log(data)
-        })
-    },
     watch:{
-
+        selectBookId() {
+            getApi('/api/book/' + this.selectBookId).then(data => {
+            }).catch(err => {
+                console.log(err)
+            })
+        }
     }
 }).mount('#app')
 

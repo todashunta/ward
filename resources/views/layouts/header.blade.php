@@ -16,6 +16,7 @@
         <li><a href="/create">create</a></li>
     </ul>
     </header>
+    
     @yield('content')
 
     <footer>
@@ -25,6 +26,5 @@
     </footer>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="@yield('script')"></script>
-    {{-- <script src="js/script.js"></script> --}}
 </body>
 </html>

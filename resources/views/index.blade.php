@@ -10,6 +10,9 @@
         <option value="{{ $book->id }}">{{ $book->name }}</option>
         @endforeach
     </select>
+    <div>
+        <p></p>
+    </div>
 </div>
 
 @endsection
