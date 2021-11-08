@@ -1,32 +1,48 @@
-const chapterApp = Vue.createApp({
+const app = Vue.createApp({
     data() {
         return {
-            wordBook: 0,
-            chapters: [],
-            exist: false
+            chapterWordBook: 0,
+            chapter: {
+                chapters: [],
+                exist: false
+            },
+            wordWordBook: 0,
+            word: {
+                chapters: [],
+                exist: false
+            },
         }
     },
-    created() {
-        this.getChapter(this.wordBook)
-    },
     methods: {
-        getChapter(id) {
+        getChapter(id, mode) {
             getApi('/api/book/' + id).then(data => {
                 console.log(data)
-                this.chapters = data.chapters
-                this.exist = true
-                if (data.word_book == false) {
-                    this.exist = false
+                if (mode == 'chapter') {
+                    this.chapter.chapters = data.chapters
+                    this.chapter.exist = true
+                    if (data.word_book == false) {
+                        this.chapter.exist = false
+                    }
                 }
-            }).then(err => console.log(err))
+                if (mode == 'word') {
+                    this.word.chapters = data.chapters
+                    this.word.exist = true
+                    if (data.word_book == false) {
+                        this.word.exist = false
+                    }
+                }
+            }).catch(err => console.log(err))
         }
     },
     watch: {
-        wordBook(e) {
-            this.getChapter(e)
+        chapterWordBook(e) {
+            this.getChapter(e, 'chapter')
+        },
+        wordWordBook(e) {
+            this.getChapter(e, 'word')
         }
     }
-}).mount('#create-chapter')
+}).mount('#create')
 
 async function getApi(url) {
     const res = await fetch(url);

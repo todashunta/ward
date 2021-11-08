@@ -16,8 +16,8 @@ class CreateMeansTable extends Migration
         Schema::create('means', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true);
             $table->string('mean');
-            $table->unsignedBigInteger('word_class_id');
             $table->unsignedBigInteger('word_id');
+            $table->unsignedBigInteger('word_class_id');
             $table->softDeletes();
             $table->timestamps();
         });

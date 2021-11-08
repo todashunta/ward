@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\WordBook;
 use App\Models\Chapter;
 use App\Models\Word;
+use App\Models\WordClass;
 
 class HomeController extends Controller
 {
@@ -19,7 +20,8 @@ class HomeController extends Controller
     public function create()
     {
         $word_books = WordBook::get();
-        return view('create', compact('word_books'));
+        $word_classes = WordClass::get();
+        return view('create', compact('word_books', 'word_classes'));
     }
 
     public function create_word_book(Request $request)
@@ -27,15 +29,28 @@ class HomeController extends Controller
         if (!empty($request->word_book_name)) {
             WordBook::create(['name' => $request->word_book_name]);
         }
-        if (!empty($request->chapter_name)) {
+        if (!empty($request->word_book_id) && !empty($request->chapter_name)) {
             WordBook::where('id', $request->word_book_id)->first();
             $chapter = new Chapter;
             $chapter->name = $request->chapter_name;
             $chapter->word_book_id = $request->word_book_id;
             $chapter->save();
         }
+
+        if (!empty($request->chapter_id) && !empty($request->word_name) && !empty($request->word_class_id) && !empty($request->word_mean_name)) {
+            $word = new Word;
+            $word->name = $request->word_name;
+            $word->save();
+        }
+
+        if (!empty($request->word_class_name)) {
+            $class = new WordClass;
+            $class->name = $request->word_class_name;
+            $class->save();
+        }
         $word_books = WordBook::get();
-        return  redirect()->route('create', compact('word_books'));
+        $word_classes = WordClass::get();
+        return  redirect()->route('create', compact('word_books', 'word_classes'));
     }
 
     public function edit($word_book_id)
