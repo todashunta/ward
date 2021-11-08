@@ -16,7 +16,6 @@ class CreateWordClassesTable extends Migration
         Schema::create('word_classes', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true);
             $table->string('name');
-            $table->softDeletes();
             $table->timestamps();
         });
     }
