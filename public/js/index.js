@@ -17,21 +17,48 @@ const app = Vue.createApp({
                 console.log(err)
             })
         },
-        selectChapterId(){
-            getApi('api/words/' + this.selectChapterId).then(data => {
-                console.log(data.words);
-                for(word of data.words){
-                    getApi('/api/means/' + word.id).then(data => {
-                        console.log(data)
+        selectChapterId() {
+             this.getWords()
+            // getApi('api/words/' + this.selectChapterId).then(data => {
+            //     this.words = data.words
+            //     this.wordExist = true
+            // }).catch(err => {
+            //     console.log(err)
+            // })
+            // for ([index, word] of this.words.entries()) {
+            //     getApi('/api/means/' + word.id).then(data => {
+            //         this.words[index].means = data.means
+            //     }).catch(err => {
+            //         console.log(err)
+            //     })
+            
+            // }
+        }
+    },
+    methods: {
+        async getWords() {
+            await fetch('api/words/' + this.selectChapterId)
+                .then(res => {
+                    return res.json()
+                })
+                .then(data => {
+                    this.words = data.words
+                    this.wordExist = true
+                }).catch(err => {
+                    console.log(err)
+                });
+            for ([index, word] of this.words.entries()) {
+                await fetch('/api/means/' + word.id)
+                    .then(res => {
+                        return res.json()
+                    })
+                    .then(data => {
+                        this.words[index].means = data.means
                     }).catch(err => {
                         console.log(err)
                     })
-                }
-                this.words = data.words
-                this.wordExist = true
-            }).catch(err => {
-                console.log(err)
-            })
+            
+            }
         }
     }
 }).mount('#app')
@@ -41,3 +68,4 @@ async function getApi(url){
     const data = res.json();
     return data
 }
+

@@ -15,9 +15,9 @@
     </select>
     <div v-if="wordExist">
         <table>
-            <tr >
-                <td></td>
-                <td></td>
+            <tr v-for="word of words">
+                <td>@{{ word.name }}</td>
+                <td v-for="mean of word.means">@{{ mean.mean }}</td>
             </tr>
         </table>
     </div>
