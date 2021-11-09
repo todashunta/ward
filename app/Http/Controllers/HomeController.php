@@ -48,7 +48,6 @@ class HomeController extends Controller
             $word->name = $request->word_name;
             $word->chapter_id = Chapter::where('name', $request->word_chapter_name)->first()->id;
             $word->save();
-            // dd([$request->word_mean_name, $word->id, $request->word_class_id]);
             $mean = new Mean;
             $mean->mean = $request->word_mean_name;
             $mean->word_id = $word->id;
