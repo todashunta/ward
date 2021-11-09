@@ -43,7 +43,7 @@
                     </select>
                     <select name="word_chapter_name">
                         <option v-if="!word.exist" value="">見つかりません</option>
-                        <option v-for='chapter of word.chapters'>@{{ chapter.name }}</option>
+                        <option v-for='chapter of word.chapters' :value="chapter.id">@{{ chapter.name }}</option>
                     </select>
                     <input type="text" name="word_name" placeholder="単語名">
                     <select name="word_class_id">

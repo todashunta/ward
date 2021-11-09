@@ -15,7 +15,7 @@ const app = Vue.createApp({
     },
     methods: {
         getChapter(id, mode) {
-            getApi('/api/book/' + id).then(data => {
+            getApi('/api/chapters/' + id).then(data => {
                 console.log(data)
                 if (mode == 'chapter') {
                     this.chapter.chapters = data.chapters

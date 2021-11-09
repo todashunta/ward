@@ -10,8 +10,16 @@
         <option value="{{ $book->id }}">{{ $book->name }}</option>
         @endforeach
     </select>
-    <div>
-        <p></p>
+    <select v-model="selectChapterId">
+        <option v-for='chapter in chapters' :value="chapter.id">@{{ chapter.name }}</option>
+    </select>
+    <div v-if="wordExist">
+        <table>
+            <tr >
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
     </div>
 </div>
 

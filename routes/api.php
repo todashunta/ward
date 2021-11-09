@@ -21,5 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/index', [ApiController::class, 'index'])->name('api_index');
-Route::get('/book/{word_book_id}', [ApiController::class, 'get_book']);
-Route::get('/chapter/{word_book_id}', [ApiController::class, 'get_chapter']);
+Route::get('/chapters/{word_book_id}', [ApiController::class, 'get_chapters']);
+Route::get('/words/{chapter_id}', [ApiController::class, 'get_words']);
+Route::get('/means/{word_id}', [ApiController::class, 'get_means']);

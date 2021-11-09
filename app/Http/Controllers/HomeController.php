@@ -46,7 +46,7 @@ class HomeController extends Controller
         if (!empty($request->word_chapter_name) && !empty($request->word_name) && !empty($request->word_class_id) && !empty($request->word_mean_name)) {
             $word = new Word;
             $word->name = $request->word_name;
-            $word->chapter_id = Chapter::where('name', $request->word_chapter_name)->first()->id;
+            $word->chapter_id = $request->word_chapter_name;
             $word->save();
             $mean = new Mean;
             $mean->mean = $request->word_mean_name;
