@@ -7,6 +7,7 @@ use App\Models\WordBook;
 use App\Models\Chapter;
 use App\Models\Word;
 use App\Models\WordClass;
+use App\Models\Mean;
 
 class HomeController extends Controller
 {
@@ -37,16 +38,22 @@ class HomeController extends Controller
             $chapter->save();
         }
 
-        if (!empty($request->chapter_id) && !empty($request->word_name) && !empty($request->word_class_id) && !empty($request->word_mean_name)) {
-            $word = new Word;
-            $word->name = $request->word_name;
-            $word->save();
-        }
-
         if (!empty($request->word_class_name)) {
             $class = new WordClass;
             $class->name = $request->word_class_name;
             $class->save();
+        }
+        if (!empty($request->word_chapter_name) && !empty($request->word_name) && !empty($request->word_class_id) && !empty($request->word_mean_name)) {
+            $word = new Word;
+            $word->name = $request->word_name;
+            $word->chapter_id = Chapter::where('name', $request->word_chapter_name)->first()->id;
+            $word->save();
+            // dd([$request->word_mean_name, $word->id, $request->word_class_id]);
+            $mean = new Mean;
+            $mean->mean = $request->word_mean_name;
+            $mean->word_id = $word->id;
+            $mean->word_class_id = $request->word_class_id;
+            $mean->save();
         }
         $word_books = WordBook::get();
         $word_classes = WordClass::get();
