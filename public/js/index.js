@@ -19,20 +19,6 @@ const app = Vue.createApp({
         },
         selectChapterId() {
              this.getWords()
-            // getApi('api/words/' + this.selectChapterId).then(data => {
-            //     this.words = data.words
-            //     this.wordExist = true
-            // }).catch(err => {
-            //     console.log(err)
-            // })
-            // for ([index, word] of this.words.entries()) {
-            //     getApi('/api/means/' + word.id).then(data => {
-            //         this.words[index].means = data.means
-            //     }).catch(err => {
-            //         console.log(err)
-            //     })
-            
-            // }
         }
     },
     methods: {

@@ -1,4 +1,3 @@
-{{-- @section('css', "css/app.css") --}}
 @section('title', 'index')
 @section('script', "js/index.js")
 
