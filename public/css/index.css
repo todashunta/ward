@@ -1,0 +1,17 @@
+.pankuzu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.pankuzu input{
+    /* display: none; */
+}
+
+.word-book-input{
+    border: 2px solid #72cdeb;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}

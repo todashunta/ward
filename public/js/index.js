@@ -3,7 +3,7 @@ const app = Vue.createApp({
         return {
             selectBookId: '0',
             selectChapterId: '0',
-            chapters: [],
+            chapters: {},
             words: [],
             wordExist: false,
         }
