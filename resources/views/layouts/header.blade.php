@@ -25,22 +25,26 @@
             <div></div>
         </div>
         <menu id="slide-bar">
-            <p>単語検索</p>
-            <p>すべての単語一覧</p>
-            <p>単語作成</p>
-            <p>単語編集</p>
-            <p>単語消去</p>
+            <p><a href="">単語検索</a></p>
+            <p><a href="/index">すべての単語一覧</a></p>
+            <p><a href="/create">単語作成</a></p>
+            <p><a href="">単語編集</a></p>
+            <p><a href="">単語消去</a></p>
         </menu>
+        <div class="cover"></div>
     </div>
         <div class="content">
             @yield('content')
-            
-            
+
+
         </div>
         <footer>
             <p>
-                created by SuntaToda
+                created by ShuntaToda
             </p>
+            <div class="icons">
+                <a href="https://github.com/todashunta"><img src="image/icon/github.png" alt=""></a>
+            </div>
         </footer>
         <script src="https://unpkg.com/vue@next"></script>
         <script src="{{ asset('js/headerMenu.js') }}"></script>

@@ -1,0 +1,26 @@
+footer{
+    height: 150px;
+    background: linear-gradient(to bottom, white, #37b7e2);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+footer p {
+    font-size: 1.3rem;
+    color: white;
+    text-shadow: 2px 2px 3px #00000030;
+}
+
+.icons{
+    display: flex;
+    justify-content: end;
+    position: absolute;
+    bottom: -50;
+    right: 0;
+}
+.icons a img {
+    height: 40px;
+    margin: 0 10px;
+}

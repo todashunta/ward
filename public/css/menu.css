@@ -1,4 +1,10 @@
 #slide-bar{
+    z-index: 999;
+    position: absolute;
+    display: flex;
+    top: 0;
+    right: 0;
+    margin-top: 100px;
     width: 400px;
     height: 100vh;
     background: #bce8f5;
@@ -6,15 +12,17 @@
     line-height: 50px;
     flex-direction: column;
     font-size: 1.2rem;
-    display: flex;
-    transform: translateX(-450px);
+    transform: translateX(450px);
     transition: .3s;
 }
 
 .menu-open-btn{
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    right: 0;
     width: 60px;
     height: 60px;
-    position: relative;
     margin: 10px;
 }
 
@@ -58,4 +66,14 @@
     transform-origin: center;
     top: calc(50% - 2px);
     transform: rotate(-45deg);
+}
+
+.cover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 500;
+    background: rgba(0, 0, 0, 0.1);
 }

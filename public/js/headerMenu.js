@@ -16,7 +16,7 @@ const headerMenu = Vue.createApp({
                 slideBar.style.transform = 'translate(0)'
             } else {
                 this.headerMenu = ''
-                slideBar.style.transform = 'translate(-450px)'
+                slideBar.style.transform = 'translate(450px)'
             }
         }
     }

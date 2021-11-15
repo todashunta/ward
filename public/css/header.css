@@ -3,6 +3,8 @@ body{
     margin: 0;
     box-sizing: border-box;
     overflow-x: hidden;
+    min-height: 100vh;
+    background: white;
 }
 header{
     display: flex;
@@ -46,6 +48,9 @@ header .header-menu p {
     font-size: 1.3rem;
     border-bottom: 3px solid #72cdeb;
 }
+header .header-menu p:last-child {
+    margin-right: 80px;
+}
 
 header .header-menu p:hover{
     color: #72cdebbb;
@@ -69,7 +74,6 @@ header .header-menu p:hover::before{
     background: linear-gradient(to right, #eb9272, #72cdeb);
 }
 
-body{
+.content{
     min-height: 100vh;
-    background: white;
 }
