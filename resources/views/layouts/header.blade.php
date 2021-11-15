@@ -25,13 +25,20 @@
             <div></div>
         </div>
         <menu id="slide-bar">
-            <p><a href="">単語検索</a></p>
-            <p><a href="/index">すべての単語一覧</a></p>
-            <p><a href="/create">単語作成</a></p>
-            <p><a href="">単語編集</a></p>
-            <p><a href="">単語消去</a></p>
+            <div class="slide-bar-text">
+                <a href=""><p>単語検索</p></a>
+                <a href="/index"><p>すべての単語一覧</p></a>
+                <a href="/create"><p>単語作成</p></a>
+                <a href=""><p>単語編集</p></a>
+                <a href=""><p>単語消去</p></a>
+                
+                
+                
+                
+                
+            </div>
         </menu>
-        <div class="cover"></div>
+        <div id="cover" @@click='menuToggle'></div>
     </div>
         <div class="content">
             @yield('content')

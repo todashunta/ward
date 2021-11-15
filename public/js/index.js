@@ -11,7 +11,6 @@ const app = Vue.createApp({
     watch:{
         selectBookId() {
             getApi('/api/chapters/' + this.selectBookId).then(data => {
-                console.log(data)
                 this.chapters = data.chapters
             }).catch(err => {
                 console.log(err)
