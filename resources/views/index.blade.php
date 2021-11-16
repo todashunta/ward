@@ -6,17 +6,20 @@
 @section('content')
 <div id="app">
     <div class="pankuzu">
-        <div class="word-book-input">
-            <input type="radio" name="word-book" v-model="selectBookId" value="noValue" id="noValue" checked>
-            <label for="noValue">単語帳を入力</label>
-            @foreach ($word_books as $book)
-                <input type="radio" name="word-book" v-model="selectBookId" value="{{ $book->id }}" id="{{ 'word-book-'.$loop->index }}">
-                <label for="{{ 'word-book-'.$loop->index }}">{{ $book->name }}</label>
-            @endforeach
+        <div class="word-book-frame" @@click="wordBookFrame">
+            <p>@{{wordBookName}}</p>
+            <div class="word-book-input">
+                @foreach ($word_books as $book)
+                    <input type="radio" name="word-book" v-model="selectBookId" value="{{ $book->id }}" id="{{ 'word-book-'.$loop->index }}">
+                    <label for="{{ 'word-book-'.$loop->index }}" @@click="wordBookFrame">{{ $book->name }}</label>
+                @endforeach
+            </div>
         </div>
+        <div class="relation"></div>
         <div class="chapter-input">
             <template v-for='chapter in chapters'>
-                <input type="radio"  name="chapter" v-model="selectChapterId" :value="chapter.id">@{{ chapter.name }}>
+                <input type="radio"  name="chapter" v-model="selectChapterId" :value="chapter.id" id="">
+                <label for="" @@click="wordBookFrame">@{{ chapter.name }}</label>
             </template>
         </div>
     </div>

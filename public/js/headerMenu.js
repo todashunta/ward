@@ -1,4 +1,4 @@
-console.log('aa')
+
 const headerMenu = Vue.createApp({
     data() {
         return {

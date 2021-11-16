@@ -31,11 +31,6 @@
                 <a href="/create"><p>単語作成</p></a>
                 <a href=""><p>単語編集</p></a>
                 <a href=""><p>単語消去</p></a>
-                
-                
-                
-                
-                
             </div>
         </menu>
         <div id="cover" @@click='menuToggle'></div>

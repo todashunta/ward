@@ -3,13 +3,30 @@
     align-items: center;
     justify-content: center;
 }
-
-
-.pankuzu input{
-    /* display: none; */
+.word-book-frame{
+    width: 200px;
+    height: 50px;
+    border: 2px solid #72cdeb;
 }
 
 .word-book-input{
+    border: 2px solid #72cdeb;
+    width: 200px;
+    display: none;
+    flex-direction: column;
+}
+.word-book-input input,
+.chapter-input input{
+    display: none;
+}
+
+.relation{
+    width: 70px;
+    height: 3px;
+    background: black;
+}
+
+.chapter-input{
     border: 2px solid #72cdeb;
     width: 200px;
     display: flex;

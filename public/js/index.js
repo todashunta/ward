@@ -6,10 +6,14 @@ const app = Vue.createApp({
             chapters: {},
             words: [],
             wordExist: false,
+            wordBookName: '単語帳選択',
+            wordBookFrameActive: false,
         }
     },
     watch:{
         selectBookId() {
+            const selectBookName = document.querySelector('.word-book-input input[type="radio"]:checked + label')
+            this.wordBookName = selectBookName.textContent
             getApi('/api/chapters/' + this.selectBookId).then(data => {
                 this.chapters = data.chapters
             }).catch(err => {
@@ -21,6 +25,15 @@ const app = Vue.createApp({
         }
     },
     methods: {
+        wordBookFrame (){
+            this.wordBookFrameActive = !this.wordBookFrameActive
+            const wordBookInput = document.querySelector('.word-book-input')
+            if(this.wordBookFrameActive){
+                wordBookInput.style.display = 'flex'
+            }else{
+                wordBookInput.style.display = 'none'
+            }
+        },
         async getWords() {
             await fetch('api/words/' + this.selectChapterId)
                 .then(res => {
@@ -42,7 +55,7 @@ const app = Vue.createApp({
                     }).catch(err => {
                         console.log(err)
                     })
-            
+
             }
         }
     }
