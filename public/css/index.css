@@ -8,11 +8,24 @@
     justify-content: center;
     z-index: 500;
     text-align: center;
+    cursor: pointer;
 }
 .word-book-frame{
     width: 200px;
     height: 50px;
     border: 2px solid #72cdeb;
+    position: relative;
+}
+.word-book-frame p,
+.chapter-frame p{
+    margin: 0;
+    height: 100%;
+    line-height: 50px;
+}
+
+.word-book-frame p:hover,
+.chapter-frame p:hover{
+    background: #72cdeb44;
 }
 
 .word-book-input{
@@ -20,6 +33,10 @@
     width: 200px;
     display: none;
     flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 50px;
+    left: -2px;
 }
 .word-book-input input{
     display: none;
@@ -28,19 +45,24 @@
 .relation{
     width: 70px;
     height: 3px;
-    background: black;
+    background: #72cdeb;
 }
 
 .chapter-input{
+    background: white;
     border: 2px solid #72cdeb;
     width: 200px;
     display: none;
     flex-direction: column;
+    position: absolute;
+    top: 50px;
+    left: -2px;
 }
 .chapter-frame{
     width: 200px;
     height: 50px;
     border: 2px solid #72cdeb;
+    position: relative;
 }
 .chapter-input input{
     display: none;
@@ -54,4 +76,25 @@
 
 label{
     line-height: 30px;
+}
+
+label:hover{
+    background: #eb927235;
+}
+
+.table {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.table table{
+    border-collapse:  collapse;
+    width: 80%;
+}
+.table td{
+    border: 3px solid #72cdeb;
+    padding: 5px;
 }

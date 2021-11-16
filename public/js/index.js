@@ -32,13 +32,14 @@ const app = Vue.createApp({
     },
     methods: {
         reset(){
-            console.log('reset')
             this.wordBookFrameActive = false
             const wordBookInput = document.querySelector('.word-book-input')
             wordBookInput.style.display = 'none'
             this.chapterFrameActive = false
             const chapterInput = document.querySelector('.chapter-input')
             chapterInput.style.display = 'none'
+            const resetCover = document.getElementById('reset-cover')
+            resetCover.style.height = '0'
         },
         wordBookFrame (){
             this.wordBookFrameActive = !this.wordBookFrameActive
@@ -50,15 +51,19 @@ const app = Vue.createApp({
 
             }else{
                 wordBookInput.style.display = 'none'
+                resetCover.style.height = '0'
             }
         },
         chapterFrame(){
             this.chapterFrameActive = !this.chapterFrameActive
             const chapterInput = document.querySelector('.chapter-input')
+            const resetCover = document.getElementById('reset-cover')
             if(this.chapterFrameActive){
                 chapterInput.style.display = 'flex'
+                resetCover.style.height = '100%'
             }else{
                 chapterInput.style.display = 'none'
+                resetCover.style.height = '0'
             }
         },
         async getWords() {
@@ -68,7 +73,6 @@ const app = Vue.createApp({
                 })
                 .then(data => {
                     this.words = data.words
-                    console.log(data)
                     this.wordExist = true
                 }).catch(err => {
                     console.log(err)

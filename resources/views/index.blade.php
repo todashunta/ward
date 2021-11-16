@@ -27,13 +27,19 @@
             </div>
         </div>
     </div>
-    <div v-if="wordExist">
+    <div v-if="wordExist" class="table">
         <table>
-            <template v-for="word of words">
-                <tr v-for="mean of word.means">
+            <template v-for="(word, wordIndex) of words">
+                <tr>
+                    <td>@{{ wordIndex + 1}}</td>
                     <td>@{{ word.name }}</td>
-                    <td>@{{ mean.class.name }}</td>
-                    <td>@{{ mean.mean }}</td>
+                    <td>@{{ word.means[0].class.name }}</td>
+                    <td>
+                    <template  v-for="(mean, meanIndex) of word.means">
+                        <template v-if="meanIndex == 0">@{{ mean.mean }}</template>
+                        <template v-else>,@{{ mean.mean }}</template>
+                    </template>
+                    </td>
                 </tr>
             </template>
         </table>

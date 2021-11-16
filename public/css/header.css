@@ -9,6 +9,7 @@ body{
 header{
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 header h1{
