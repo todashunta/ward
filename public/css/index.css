@@ -1,7 +1,13 @@
 .pankuzu{
+    background: white;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 500;
+    text-align: center;
 }
 .word-book-frame{
     width: 200px;
@@ -15,8 +21,7 @@
     display: none;
     flex-direction: column;
 }
-.word-book-input input,
-.chapter-input input{
+.word-book-input input{
     display: none;
 }
 
@@ -29,6 +34,24 @@
 .chapter-input{
     border: 2px solid #72cdeb;
     width: 200px;
-    display: flex;
+    display: none;
     flex-direction: column;
+}
+.chapter-frame{
+    width: 200px;
+    height: 50px;
+    border: 2px solid #72cdeb;
+}
+.chapter-input input{
+    display: none;
+}
+
+#reset-cover{
+    position: fixed;
+    width: 100%;
+    height: 0;
+}
+
+label{
+    line-height: 30px;
 }

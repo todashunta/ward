@@ -8,6 +8,7 @@ use App\Models\WordBook;
 use App\Models\Chapter;
 use App\Models\Word;
 use App\Models\Mean;
+use App\Models\WordClass;
 
 class ApiController extends Controller
 {
@@ -34,16 +35,16 @@ class ApiController extends Controller
         ];
         return response()->json($data);
     }
-    public function get_words($id)
-    {
-        $chapter = Chapter::where('id', $id)->first();
-        $words = Word::where('chapter_id', $id)->get();
-        $data = [
-            'chapter' => $chapter,
-            'words' => $words
-        ];
-        return response()->json($data);
-    }
+    // public function get_words($id)
+    // {
+    //     $chapter = Chapter::where('id', $id)->first();
+    //     $words = Word::where('chapter_id', $id)->get();
+    //     $data = [
+    //         'chapter' => $chapter,
+    //         'words' => $words
+    //     ];
+    //     return response()->json($data);
+    // }
     public function get_means($id)
     {
         $word = Word::where('id', $id)->first();
@@ -51,6 +52,25 @@ class ApiController extends Controller
         $data = [
             'word' => $word,
             'means' => $means
+        ];
+        return response()->json($data);
+    }
+
+    public function get_words($id)
+    {
+        $chapter = Chapter::where('id', $id)->first();
+        $words = Word::where('chapter_id', $id)->get();
+        foreach ($words as $word) {
+            $means = Mean::where('word_id', $word->id)->get();
+            $word->means = $means;
+            foreach ($means as $index => $mean) {
+                $class = WordClass::where('id', $mean->word_class_id)->first();
+                $word->means[$index]->class = $class;
+            }
+        }
+        $data = [
+            'chapter' => $chapter,
+            'words' => $words
         ];
         return response()->json($data);
     }

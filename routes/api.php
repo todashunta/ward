@@ -24,3 +24,4 @@ Route::get('/index', [ApiController::class, 'index'])->name('api_index');
 Route::get('/chapters/{word_book_id}', [ApiController::class, 'get_chapters']);
 Route::get('/words/{chapter_id}', [ApiController::class, 'get_words']);
 Route::get('/means/{word_id}', [ApiController::class, 'get_means']);
+Route::get('/all/{chapter_id}', [ApiController::class, 'get_all']);
