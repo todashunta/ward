@@ -49,6 +49,9 @@
             </div>
         </footer>
         <script src="https://unpkg.com/vue@next"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.9.10/xlsx.full.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
         <script src="{{ asset('js/headerMenu.js') }}"></script>
         <script src="@yield('script')"></script>
 </body>

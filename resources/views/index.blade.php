@@ -27,8 +27,9 @@
             </div>
         </div>
     </div>
+    <button id="dl-xlsx">ダウンロード</button>
     <div v-if="wordExist" class="table">
-        <table>
+        <table class="table-to-export" data-sheet-name="東京都区一覧">
             <template v-for="(word, wordIndex) of words">
                 <tr>
                     <td>@{{ wordIndex + 1}}</td>
