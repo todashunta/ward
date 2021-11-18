@@ -23,11 +23,6 @@
     line-height: 50px;
 }
 
-.word-book-frame p:hover,
-.chapter-frame p:hover{
-    background: #72cdeb44;
-}
-
 .word-book-input{
     border: 2px solid #72cdeb;
     width: 200px;
@@ -35,7 +30,7 @@
     flex-direction: column;
     background: white;
     position: absolute;
-    top: 50px;
+    top: 55px;
     left: -2px;
 }
 .word-book-input input{
@@ -55,7 +50,7 @@
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 50px;
+    top: 55px;
     left: -2px;
 }
 .chapter-frame{
@@ -63,6 +58,11 @@
     height: 50px;
     border: 2px solid #72cdeb;
     position: relative;
+}
+
+.word-book-frame:hover,
+.chapter-frame:hover{
+    border: 2px solid #eb9272;
 }
 .chapter-input input{
     display: none;
@@ -79,7 +79,10 @@ label{
 }
 
 label:hover{
-    background: #eb927235;
+    box-sizing: border-box;
+    line-height: 26px;
+    border: 2px solid #eb9272;
+    /* background: #eb927235; */
 }
 
 .table {

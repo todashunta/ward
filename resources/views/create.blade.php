@@ -65,6 +65,13 @@
                     @endforeach
                 </div>
             </div>
+            
+            <div class="custom-file">
+                <input type="file" id="customFile" @@change='selectFile' ref="preview">
+                <label class="custom-file-label" for="customFile">Excelファイルを選択...</label>
+                <p>@{{ excelObj }}</p>
+                <button @@click="excelUp" v-if="excelObj != ''" type="button">追加</button>
+            </div>
     </div>
     </form>
 @endsection

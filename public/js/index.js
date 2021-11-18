@@ -73,6 +73,7 @@ const app = Vue.createApp({
                 })
                 .then(data => {
                     this.words = data.words
+                    console.log(this.words)
                     this.wordExist = true
                 }).catch(err => {
                     console.log(err)

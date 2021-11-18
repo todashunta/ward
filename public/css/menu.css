@@ -16,7 +16,7 @@
     transition: .3s;
     padding: 0;
     border-left: 15px solid #425db6;
-    background: linear-gradient(to bottom left ,#9fd1e2 50%, #d1dadd 50%);
+    background: #c2e8e1;
 }
 .slide-bar-text{
     margin-top: 100px;
@@ -29,8 +29,6 @@
 .slide-bar-text p{
     margin: 0;
     padding: 10px;
-    border-left: 20px solid #dfe17f;
-    border-right: 20px solid #dfe17f;
     border-top: 3px dashed #425db6;
     color: #72cdeb;
     font-size: 1.5rem;
@@ -48,8 +46,11 @@
     height: 60px;
     margin: 10px;
     background: rgba(255, 255, 255, 0.5);
+    transition: .3s;
 }
-
+.menu-open-btn:hover{
+    background: linear-gradient(to right, rgba(255, 234, 208, 0.508), rgba(226, 253, 255, 0.508));
+}
 .menu-open-btn div:nth-child(1){
     position: absolute;
     top: calc(50% - 2px);

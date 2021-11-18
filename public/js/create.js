@@ -11,6 +11,7 @@ const app = Vue.createApp({
                 chapters: [],
                 exist: false
             },
+            excelObj: ''
         }
     },
     methods: {
@@ -32,6 +33,24 @@ const app = Vue.createApp({
                     }
                 }
             }).catch(err => console.log(err))
+        },
+        selectFile(e) {
+            var input = e.target;
+            var reader = new FileReader();
+            reader.onload = () => {
+                var fileData = reader.result;
+                var wb = XLSX.read(fileData, {type : 'binary'});
+                wb.SheetNames.forEach((sheetName) => {
+                    var rowObj =XLSX.utils.sheet_to_json(wb.Sheets[sheetName]);
+                    console.log(rowObj)
+                    this.excelObj = rowObj
+                    this.excelData = JSON.stringify(rowObj)
+                })
+            };
+            reader.readAsBinaryString(input.files[0]);
+        },
+        excelUp() {
+            console.log('click')
         }
     },
     watch: {
