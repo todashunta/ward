@@ -11,7 +11,12 @@ const app = Vue.createApp({
                 chapters: [],
                 exist: false
             },
-            excelObj: '',
+            excelWordBook: '',
+            excelChapter: '',
+            excel: {
+                chapters: [],
+                exist: false,
+            },
             excelData: ''
         }
     },
@@ -25,34 +30,31 @@ const app = Vue.createApp({
                     if (data.word_book == false) {
                         this.chapter.exist = false
                     }
-                }
-                if (mode == 'word') {
+                }else if (mode == 'word') {
                     this.word.chapters = data.chapters
                     this.word.exist = true
                     if (data.word_book == false) {
                         this.word.exist = false
                     }
+                }else if (mode == 'excel') {
+                    this.excel.chapters = data.chapters
+                    this.excel.exist = true
+                    if (data.word_book == false) {
+                        this.excel.exist = false
+                    }
                 }
             }).catch(err => console.log(err))
         },
         selectFile(e) {
-            var input = e.target;
-            var reader = new FileReader();
+            let input = e.target;
+            let reader = new FileReader();
             reader.onload = () => {
-                var fileData = reader.result;
-                var wb = XLSX.read(fileData, {type : 'binary'});
+                let fileData = reader.result;
+                let wb = XLSX.read(fileData, {type : 'binary'});
                 wb.SheetNames.forEach((sheetName) => {
-                    var rowObj =XLSX.utils.sheet_to_json(wb.Sheets[sheetName]);
-                    this.excelObj = rowObj
+                    let rowObj =XLSX.utils.sheet_to_json(wb.Sheets[sheetName]);
                     this.excelData = rowObj
                     console.log(this.excelData)
-                    postExcel('/api/excel', this.excelData)
-                    .then(data => {
-                        console.log(data)
-                    })
-                    .catch(err => {
-                        console.log(err)
-                    })
                 })
             };
             reader.readAsBinaryString(input.files[0]);
@@ -60,7 +62,19 @@ const app = Vue.createApp({
 
         },
         excelUp() {
-            console.log('click')
+            if (this.excelData[0].word_book_id == null) {
+                this.excelData.unshift({
+                'word_book_id': this.excelWordBook,
+                'chapter_id': this.excelChapter
+            })
+            }
+            postExcel('/api/excel', this.excelData)
+                .then(data => {
+                    console.log(data)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
         }
     },
     watch: {
@@ -69,6 +83,9 @@ const app = Vue.createApp({
         },
         wordWordBook(e) {
             this.getChapter(e, 'word')
+        },
+        excelWordBook(e) {
+            this.getChapter(e, 'excel')
         }
     }
 }).mount('#create')

@@ -67,11 +67,22 @@
             </div>
 
             <div class="custom-file">
+                <div>
+                    <select v-model="excelWordBook">
+                            @foreach ($word_books as $book)
+                            <option value="{{ $book->id }}">{{ $book->name }}</option>
+                            @endforeach
+                    </select>
+                    <select v-model="excelChapter">
+                        <option v-if="!excel.exist" value="">見つかりません</option>
+                        <option v-for='chapter of excel.chapters' :value="String(chapter.id)">@{{ chapter.name }}</option>
+                    </select>
+                </div>
                 <form action=""id="aiueo">
                     <input type="file" id="customFile" @@change='selectFile' ref="preview">
                     <label class="custom-file-label" for="customFile">Excelファイルを選択...</label>
-                    <p>@{{ excelObj }}</p>
-                    <button @@click="excelUp" v-if="excelObj != ''" type="button">追加</button>
+                    <button @@click="excelUp" v-if="excelData != ''" type="button">追加</button>
+                    <p>@{{ excelData }}</p>
                 </form>
             </div>
     </div>
