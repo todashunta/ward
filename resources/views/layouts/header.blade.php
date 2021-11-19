@@ -42,7 +42,7 @@
         </div>
         <footer>
             <p>
-                {{-- created by ShuntaToda --}}
+                created by ShuntaToda
             </p>
             <div class="icons">
                 <a href="https://github.com/todashunta"><img src="image/icon/github.png" alt=""></a>

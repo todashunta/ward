@@ -35,16 +35,6 @@ class ApiController extends Controller
         ];
         return response()->json($data);
     }
-    // public function get_words($id)
-    // {
-    //     $chapter = Chapter::where('id', $id)->first();
-    //     $words = Word::where('chapter_id', $id)->get();
-    //     $data = [
-    //         'chapter' => $chapter,
-    //         'words' => $words
-    //     ];
-    //     return response()->json($data);
-    // }
     public function get_means($id)
     {
         $word = Word::where('id', $id)->first();
@@ -73,5 +63,12 @@ class ApiController extends Controller
             'words' => $words
         ];
         return response()->json($data);
+    }
+    public function excel(Request $request)
+    {
+        $data = [
+            'a' => $request->json()->all()
+        ];
+        return response()->json($request->json()->all());
     }
 }

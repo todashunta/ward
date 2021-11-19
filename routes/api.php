@@ -25,3 +25,5 @@ Route::get('/chapters/{word_book_id}', [ApiController::class, 'get_chapters']);
 Route::get('/words/{chapter_id}', [ApiController::class, 'get_words']);
 Route::get('/means/{word_id}', [ApiController::class, 'get_means']);
 Route::get('/all/{chapter_id}', [ApiController::class, 'get_all']);
+
+Route::post('/excel', [ApiController::class, 'excel']);

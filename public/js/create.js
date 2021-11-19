@@ -11,7 +11,8 @@ const app = Vue.createApp({
                 chapters: [],
                 exist: false
             },
-            excelObj: ''
+            excelObj: '',
+            excelData: ''
         }
     },
     methods: {
@@ -42,12 +43,21 @@ const app = Vue.createApp({
                 var wb = XLSX.read(fileData, {type : 'binary'});
                 wb.SheetNames.forEach((sheetName) => {
                     var rowObj =XLSX.utils.sheet_to_json(wb.Sheets[sheetName]);
-                    console.log(rowObj)
                     this.excelObj = rowObj
-                    this.excelData = JSON.stringify(rowObj)
+                    this.excelData = rowObj
+                    console.log(this.excelData)
+                    postExcel('/api/excel', this.excelData)
+                    .then(data => {
+                        console.log(data)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
                 })
             };
             reader.readAsBinaryString(input.files[0]);
+
+
         },
         excelUp() {
             console.log('click')
@@ -65,6 +75,18 @@ const app = Vue.createApp({
 
 async function getApi(url) {
     const res = await fetch(url);
+    const data = res.json()
+    return data
+}
+
+async function postExcel(url, postData){
+    const res = await fetch(url ,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json, charset=utf-8',
+        },
+        body: JSON.stringify(postData)
+    })
     const data = res.json()
     return data
 }
