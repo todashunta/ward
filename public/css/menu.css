@@ -16,23 +16,27 @@
     transition: .3s;
     padding: 0;
     border-left: 15px solid #425db6;
-    background: #c2e8e1;
+    background: #ffffff;
 }
 .slide-bar-text{
     margin-top: 100px;
-    background: #eff2f3c9;
+    background: #ffffffc9;
 }
 
 .slide-bar-text a{
     text-decoration: none;
 }
-.slide-bar-text p{
+.slide-bar-text a p{
     margin: 0;
     padding: 10px;
     border-top: 3px dashed #425db6;
     color: #72cdeb;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
+}
+
+.slide-bar-text a:last-child p{
+    border-bottom: 3px dashed #425db6;
 }
 .slide-bar-text p:hover{
     background: #eff2f3e5;

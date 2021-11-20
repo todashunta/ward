@@ -1,0 +1,47 @@
+/* word display */
+#app {
+    width: 100%;
+}
+.main{
+    margin-top: 50px;
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.word,
+.mean{
+    height: 200px;
+    text-align: center;
+    font-weight:500;
+    font-size: 3rem;
+}
+
+.num{
+    font-size: 2rem;
+    position: absolute;
+    left: 50px;
+}
+
+
+.play{
+    margin: auto;
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+}
+.play div{
+    background: #63cbee;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+.play div img{
+    margin: auto;
+    height: 30px;
+    width: 30px;
+}

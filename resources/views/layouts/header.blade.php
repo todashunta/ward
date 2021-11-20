@@ -40,7 +40,7 @@
 
 
         </div>
-        <footer>
+        <footer id="footer">
             <p>
                 created by ShuntaToda
             </p>

@@ -101,3 +101,15 @@ label:hover{
     border: 3px solid #72cdeb;
     padding: 5px;
 }
+
+.download{
+    display: flex;
+    justify-content: center;
+}
+
+.download button {
+    border: 3px solid #72cdeb;
+    background: #fff7994a;
+    padding: 5px;
+    font-weight: 800;
+}

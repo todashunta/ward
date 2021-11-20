@@ -27,23 +27,25 @@
             </div>
         </div>
     </div>
-    <button id="dl-xlsx">ダウンロード</button>
     <div v-if="wordExist" class="table">
         <table class="table-to-export" data-sheet-name="東京都区一覧">
             <template v-for="(word, wordIndex) of words">
                 <tr>
                     <td>@{{ wordIndex + 1}}</td>
+                    <td>@{{ word.means[0].class.name[0] }}</td>
                     <td>@{{ word.name }}</td>
-                    <td>@{{ word.means[0].class.name }}</td>
                     <td>
-                    <template  v-for="(mean, meanIndex) of word.means">
-                        <template v-if="meanIndex == 0">@{{ mean.mean }}</template>
-                        <template v-else>,@{{ mean.mean }}</template>
-                    </template>
+                        <template  v-for="(mean, meanIndex) of word.means">
+                            <template v-if="meanIndex == 0">@{{mean.mean }}</template>
+                            <template v-else>,@{{ mean.mean }}</template>
+                        </template>
                     </td>
                 </tr>
             </template>
         </table>
+    </div>
+    <div class="download">
+        <button @@click='dlExcel' v-if='wordExist'>ダウンロード(.xlsx)</button>
     </div>
 </div>
 
