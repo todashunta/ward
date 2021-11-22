@@ -15,7 +15,8 @@ const app = Vue.createApp({
             chapters: {},
             words: [],
             wordCount: 0,
-            langMode: 'english',
+            langMode: '',
+            langSwitch: 'english',
         }
     },
     methods: {
@@ -29,8 +30,10 @@ const app = Vue.createApp({
             if(!this.words.length){
                 alert('単語が選択されていません')
             }else{
+                this.langMode = 'english'
+                console.log(this.words[this.wordCount].name, this.langModes)
                 speechText(this.words[this.wordCount].name, this.langMode)
-                this.langMode == 'japanese'
+                this.langSwitch = 'japanese'
             }
         },
         rightSkip(){
@@ -88,9 +91,25 @@ const app = Vue.createApp({
                 });
         },
         onend() {
-            speechText(this.words[this.wordCount].means[0].mean, this.langMode)
-            this.langMode == 'english'
-            this.wordCount++
+            if(this.langSwitch == 'english'){
+                this.langMode = 'english'
+                console.log(this.words[this.wordCount].name, this.langModes)
+                speechText(this.words[this.wordCount].name, this.langMode)
+            }else if (this.langSwitch == 'japanese'){
+                this.langMode = 'japanese'
+                let text = ''
+                this.words[this.wordCount].means.forEach((mean, index) => {
+                    if(index == 0){
+                        console.log(mean, index)
+                        text += mean.mean
+                    }else{
+                        console.log(mean, index)
+                        text += ',' + mean.mean
+                    }
+                });
+                console.log(text, this.langModes)
+                speechText(text, this.langMode)
+            }
         }
 
     },
