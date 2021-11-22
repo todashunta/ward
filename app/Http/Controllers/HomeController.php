@@ -13,7 +13,8 @@ class HomeController extends Controller
 {
     public function home()
     {
-        return view('home');
+        $word_books = WordBook::get();
+        return view('home', compact('word_books'));
     }
 
     public function index()
